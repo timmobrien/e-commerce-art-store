@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.21.3"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.14",
+    "dotenv": "^16.0.1"
+  },
+  "scripts": {
+    "start": "node server.js"
+  },
+  "name": "e-commerce-art-store",
+  "version": "1.0.0",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/timmobrien/e-commerce-art-store.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/timmobrien/e-commerce-art-store/issues"
+  },
+  "homepage": "https://github.com/timmobrien/e-commerce-art-store#readme",
+  "description": ""
+}
