@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/timmobrien/e-commerce-art-store/issues"
   },
-  "homepage": "https://github.com/timmobrien/e-commerce-art-store#readme"
+  "homepage": "https://github.com/timmobrien/e-commerce-art-store#readme",
+  "dependencies": {
+    "express": "^4.18.1"
+  }
 }
