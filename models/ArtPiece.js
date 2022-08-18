@@ -1,7 +1,7 @@
 const { Model, DataTypes } = require ('sequelize');
-const sequelize = require('..config/connection');
+const sequelize = require('../config/connection');
+const User = require('./User');
 const Artist = require('./Artist');
-
 
 class ArtPiece extends Model {}
 
@@ -11,6 +11,7 @@ ArtPiece.init(
             type: DataTypes.INTEGER,
             allowNull: false,
             autoIncrement: true,
+            primaryKey: true,
         },
         title: {
             type: DataTypes.STRING,
@@ -20,23 +21,23 @@ ArtPiece.init(
         artist_id: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'artist',
+                model: Artist,
                 key: 'id'
             },
-        },
-        date_created: {
-            type: DataTypes.DATE,
-            allowNull: false,
-            validate: {
-                isDate: true
-            }, 
+        // },
+        // // date_created: {
+        // //     type: DataTypes.DATE,
+        // //     allowNull: false,
+        // //     validate: {
+        // //         isDate: true
+        // //     }, 
         },
         art_style: {
             type: DataTypes.STRING,
             allowNull: false,
         },
         price: {
-            type: DataTypes.DECIMAL(6,2), 
+            type: DataTypes.DECIMAL, 
             allowNull: false,
             validate: {
                 isDecimal: true
@@ -44,12 +45,13 @@ ArtPiece.init(
         },
         is_sold: {
             type: DataTypes.BOOLEAN,
+            defaultValue: false,
             allowNull: false
         },
         sold_to: {
             type: DataTypes.INTEGER,
             references: {
-                model: 'user',
+                model: User,
                 key: 'id'
             },
         },

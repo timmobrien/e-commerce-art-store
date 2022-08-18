@@ -1,5 +1,5 @@
 const { Model, DataTypes } = require('sequelize');
-const sequelize = require('..config/connection');
+const sequelize = require('../config/connection')
 
 class User extends Model { 
     checkPassword(loginPw) {
@@ -15,12 +15,19 @@ User.init(
             autoIncrement: true,
             primaryKey: true
         },
-        name: {
+        first_name: {
             type: DataTypes.STRING,
             allowNull: false,
             validate: {
                 isAlpha: true
             },
+        last_name: {
+            type: DataTypes.STRING,
+            allowNull: false,
+            validate: {
+                isAlpha: true
+            },
+        }    
         },
         email: {
             type: DataTypes.STRING,
