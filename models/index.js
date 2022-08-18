@@ -2,6 +2,7 @@ const User = require('./User');
 const Artist = require('./Artist');
 const ArtPiece = require('./ArtPiece');
 
+
 Artist.hasMany(ArtPiece, {
     foreignKey: 'artist',
   });
