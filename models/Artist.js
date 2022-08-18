@@ -1,5 +1,6 @@
 const { Model, DataTypes } = require ('sequelize');
-const sequelize = require('..config/connection');
+const sequelize = require('../config/connection');
+
 
 class Artist extends Model {}
 
@@ -18,10 +19,10 @@ Artist.init(
             isAlpha: true,
         }
     },
-    age: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-    },
+    // age: {
+    //     type: DataTypes.INTEGER,
+    //     allowNull: false,
+    // },
     birthplace: {
         type: DataTypes.STRING,
         allowNull: false,
