@@ -18,6 +18,9 @@ router.get('/', async (req, res, next) => {
             paintings.get({plain: true})
         })
 
+        res.render('products', {
+            paintings,
+        })
         //TODO: res.render('homepage') etc. etc.
     } catch (err) {
         console.log(err)
