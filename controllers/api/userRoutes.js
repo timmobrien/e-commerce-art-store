@@ -1,6 +1,6 @@
 const router = require('express').Router()
 
-
+const { User } = require('../../models/')
 // PLAN
 
 // Post request for new user
