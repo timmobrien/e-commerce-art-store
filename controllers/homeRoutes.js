@@ -1,5 +1,6 @@
 // PLAN
 const router = require('express').Router()
+const { raw } = require('express');
 const { Artist, ArtPiece, Cart } = require("../models");
 
 
@@ -7,16 +8,15 @@ const { Artist, ArtPiece, Cart } = require("../models");
 // TODO: Get all paintings where sold: false
 router.get('/', async (req, res, next) => {
     try {
-        const dbPaintingsData = await ArtPiece.findAll({
+        const paintings = await ArtPiece.findAll({
+            raw: true,
+            nest:true,
             include:[{
                 model: Artist,
-                attributes: ['name', 'art_style']
-            }]
+            }],
         })
 
-        const paintings = dbPaintingsData.map((painting)=> {
-            paintings.get({plain: true})
-        })
+        console.log(paintings)
 
         res.render('products', {
             paintings,
@@ -41,7 +41,6 @@ router.get('/painting/:id', async (req, res, next) => {
                     'name',
                     'art_style',
                     'birthplace',
-                    'age'
                 ]
             }]
         })
@@ -49,6 +48,8 @@ router.get('/painting/:id', async (req, res, next) => {
         const painting = dbPaintingData.get({
             plain: true
         })
+
+        res.status(200).json(painting)
 
         // TODO: render the painting
     } catch (error) {
@@ -63,16 +64,33 @@ router.get('/add-to-cart/:id', async (req, res, next) => {
     const paintingId = req.params.id;
     const cart = new Cart(req.session.cart ? req.session.cart : {})
 
-    ArtPiece.findByPk(paintingId, function (err, painting) {
-        if (err) {
-            return;
-            // TODO: add some error messaging
-        }
-        cart.add(painting, painting.id);
+    try {
+        const paintingData = await ArtPiece.findByPk(paintingId);
+        const painting = paintingData.get({plain: true})
+        console.log(painting)
+
+        cart.add(painting, paintingId);
         req.session.cart = cart;
         console.log(req.session.cart)
-        res.redirect('/')
-    })
+    } catch (error) {
+        
+    }
+
+    // ArtPiece.findByPk(paintingId, function (err, painting) {
+    //     console.log('hey')
+    //     if (err) {
+    //         console.log('hey there was an error');
+    //         // TODO: add some error messaging
+    //     }
+    //     console.log('hello')
+    //     cart.add(painting, painting.id);
+    //     req.session.cart = cart;
+    //     console.log(req.session.cart)
+    //     res.redirect('/')
+    // })
+    // console.log(req.session.cart)
 })
+
+module.exports = router
 
 // TODO: Route to view cart

@@ -8,12 +8,13 @@ router.post('/user/', async (req, res, next) => {
     try {
         // Create the user in the db
         const dbUserData = await User.create({
-            name: req.body.username,
+            first_name: req.body.first_name,
+            last_name: req.body.last_name,
             password: req.body.password,
             email: req.body.email,
             address: req.body.address
         })
-    
+        
         // In session storage, log them in
         req.session.save(() => {
             req.session.loggedIn = true,
@@ -88,3 +89,4 @@ router.post('/user/logout', (req, res, next) => {
     // Destroy the session
     // Decide if i want to destroy the cart too (probably since we arent saving carts in db)
 
+module.exports = router

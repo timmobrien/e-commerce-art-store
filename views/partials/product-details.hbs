@@ -1,9 +1,9 @@
-<div class="col-3">
+<div class="col-4 my-2">
   <div class="card h-100">
     <!-- Product image-->
     <img
       class="card-img-top"
-      src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
+      src="/images/{{image}}"
       alt="..."
     />
     <!-- Product details-->
@@ -11,10 +11,10 @@
       <div class="text-center">
         <!-- Product name-->
         <h5 class="fw-bolder">{{title}}</h5>
-        <h6 class="fw-bolder">ARTIST</h4>
+        <h6>{{artist.name}}</h4>
 
         <!-- Product price-->
-        {{price}}
+        $ {{price}}
       </div>
     </div>
     <!-- Product actions-->
