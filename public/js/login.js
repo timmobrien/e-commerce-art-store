@@ -1,25 +1,27 @@
 const loginHandler = async function(event) {
     event.preventDefault();
   
-    const usernameEl = document.querySelector("#"); 
-    const passwordEl = document.querySelector("#");
+    const passwordEl = document.querySelector("#login-password").value.trim();
+    const emailEl = document.querySelector('#login-email').value.trim()
 
-    fetch("/api/user/login", {
+
+    const response = await fetch("/user/login", {
       method: "POST",
       body: JSON.stringify({
-        username: usernameEl.value,
-        password: passwordEl.value
+        email: emailEl,
+        password: passwordEl
       }),
       headers: { "Content-Type": "application/json" }
     })
-      .then(function() {
-        document.location.replace("/"); 
-      })
-      .catch(err => {
-        console.log(err);
-      })
+
+    console.log(response)
+    if(response.ok) {
+      document.location.replace('/')
+    } else {
+      alert('Incorrect username or password')
+    }
   };
   
   document
-    .querySelector("#login-form")  
+    .querySelector(".login-form")  
     .addEventListener("submit", loginHandler);

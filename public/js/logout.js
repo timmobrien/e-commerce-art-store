@@ -1,5 +1,5 @@
 function logout() {
-    fetch("/api/user/logout", {
+    fetch("/user/logout", {
       method: "post",
       headers: { "Content-Type": "application/json" }
     })
@@ -9,4 +9,4 @@ function logout() {
       .catch(err => console.log(err));
   }
   
-  document.querySelector("#logout-link").addEventListener("click", logout);
+  document.querySelector("#logout-btn").addEventListener("click", logout);

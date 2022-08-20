@@ -8,6 +8,9 @@ const { Artist, ArtPiece, Cart } = require("../models");
 // TODO: Get all paintings where sold: false
 router.get('/', async (req, res, next) => {
     try {
+
+        console.log("LOGGED IN: "+req.session.loggedIn)
+        
         const paintings = await ArtPiece.findAll({
             raw: true,
             nest:true,
@@ -16,10 +19,9 @@ router.get('/', async (req, res, next) => {
             }],
         })
 
-        console.log(paintings)
-
         res.render('products', {
             paintings,
+            loggedIn: req.session.loggedIn
         })
         //TODO: res.render('homepage') etc. etc.
     } catch (err) {
@@ -89,6 +91,20 @@ router.get('/add-to-cart/:id', async (req, res, next) => {
     //     res.redirect('/')
     // })
     // console.log(req.session.cart)
+})
+
+// Register page route
+router.get('/register', (req, res) => {
+    if (req.session.loggedIn) {
+      res.redirect('/');
+      return;
+    }
+  
+    res.render('register');
+});
+
+router.get('/login', (req, res) => {
+    res.render('login')
 })
 
 module.exports = router

@@ -6,6 +6,8 @@ const { User } = require('../../models/')
 // Post request for new user
 router.post('/user/', async (req, res, next) => {
     try {
+
+        
         // Create the user in the db
         const dbUserData = await User.create({
             first_name: req.body.first_name,
@@ -25,6 +27,7 @@ router.post('/user/', async (req, res, next) => {
     } catch (err) {
         // set up error handling later
         console.log(err)
+        console.log('REQUEST: ' + req)
         res.status(500).json(err)
     }
 })
@@ -35,11 +38,16 @@ router.post('/user/', async (req, res, next) => {
 router.post('/user/login', async (req, res, next) => {
     try {
         // See if the user in the db
+        console.log(req.body)
+
+
         const dbUserData = await User.findOne({
             where: {
                 email: req.body.email
             }
         })
+
+        console.log('DBUSERDATA'+dbUserData)
         
         if(!dbUserData) {
             res
@@ -47,6 +55,7 @@ router.post('/user/login', async (req, res, next) => {
               .json({
                 message: "Incorrect email or password, please try again"
               })
+            return;
         }
         
         // If they are, check their password with the checkPassword()
@@ -59,6 +68,7 @@ router.post('/user/login', async (req, res, next) => {
               .json({
                 message: "Incorrect email or password, please try again"
               })
+            return;
         }
 
         req.session.save(() => {
@@ -68,12 +78,12 @@ router.post('/user/login', async (req, res, next) => {
               .status(200)
               .json({user: dbUserData, message: "Log in successful"})
         })
-    } catch (error) {
+    } catch (err) {
         console.log(err)
         res.status(500).json(err)
     }
 })
-        // Check password function is defined in the model, it decrypts and then returns whether they are the same
+        // Check password function is defined in the model, it encrypts the submission and then returns whether they are the same
     // If password is correct, save in sessionStorage as logged in
 
 // To logout

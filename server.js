@@ -5,7 +5,8 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const routes = require('./controllers');
 
-const sequelize = require('./config/connection')
+const sequelize = require('./config/connection');
+const isAuthenticated = require('./utils/isAuthenticated');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // add connect session sequelize
@@ -36,6 +37,8 @@ app.set('view engine', 'hbs')
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
+
+
 
 app.use(routes)
 

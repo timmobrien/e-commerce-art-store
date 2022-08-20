@@ -13,7 +13,7 @@
         <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" href="#">Home</a>
+                    <a class="nav-link active" href="/">Home</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">About Us</a>
@@ -21,16 +21,21 @@
             </ul>
             <ul class="navbar-nav">
                 <li class="navbar-nav me-auto mb-2 mb-lg-0">
+                    {{#if loggedIn}}
                     <li class="nav-item">
                         <a href="#" class="nav-link active">Cart</a>
-                        
                     </li>
                     <li class="nav-item">
                         <a href="#" class="nav-link active">Checkout</a>
                     </li>
+                        <button type="button" id="logout-btn" class="btn btn-small btn-outline-danger">Log out</button>                    {{else}}
                     <li class="nav-item">
-                        <a href="#" class="nav-link active">Login</a>
+                        <a href="/login" class="nav-link active">Login</a>
                     </li>
+                    <li class="nav-item">
+                        <a href="/register" class="nav-link active">Register</a>
+                    </li>
+                    {{/if}}
                 </li>
             </ul>
         </div>
@@ -48,5 +53,10 @@
 
         {{{body}}}
     </section>
+
+  {{#if loggedIn}}
+  <script src="/js/logout.js"></script>
+  {{/if}}
+
 
 </body>
