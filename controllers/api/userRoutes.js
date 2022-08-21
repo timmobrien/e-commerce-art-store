@@ -16,6 +16,8 @@ router.post('/user/', async (req, res, next) => {
             email: req.body.email,
             address: req.body.address
         })
+
+        
         
         // In session storage, log them in
         req.session.save(() => {

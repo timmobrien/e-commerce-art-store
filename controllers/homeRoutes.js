@@ -104,7 +104,7 @@ router.get('/cart', (req, res, next) => {
 })
 
 // Register page route
-router.get('/register', (req, res) => {
+router.get('/register', (req, res, next) => {
     if (req.session.loggedIn) {
       res.redirect('/');
       return;
@@ -113,8 +113,12 @@ router.get('/register', (req, res) => {
     res.render('register');
 });
 
-router.get('/login', (req, res) => {
+router.get('/login', (req, res, next) => {
     res.render('login')
+})
+
+router.get('/checkout', (req, res, next) => {
+    res.render('checkout-page')
 })
 
 module.exports = router
