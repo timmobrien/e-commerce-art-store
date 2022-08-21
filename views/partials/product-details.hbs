@@ -1,26 +1,29 @@
 <div class="col-4 my-2">
   <div class="card h-100">
     <!-- Product image-->
-    <img
-      class="card-img-top"
-      src="/images/{{image}}"
-      alt="..."
-    />
-    <!-- Product details-->
-    <div class="card-body p-4">
-      <div class="text-center">
-        <!-- Product name-->
-        <h5 class="fw-bolder">{{title}}</h5>
-        <h6>{{artist.name}}</h4>
+    <a class="text-decoration-none" href="/painting/{{id}}">
 
-        <!-- Product price-->
-        $ {{price}}
+      <img
+        class="card-img-top product-cards"
+        src="/images/{{image}}"
+        alt="..."
+      />
+      <!-- Product details-->
+      <div class="card-body p-4">
+        <div class="text-center">
+          <!-- Product name-->
+          <h5 class="fw-bolder">{{title}}</h5>
+          <h6>{{artist.name}}</h6>
+
+          <!-- Product price-->
+          $ {{price}}
+        </div>
       </div>
-    </div>
+    </a>
     <!-- Product actions-->
     <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
       <div class="text-center">
-        <a class="btn btn-outline-dark mt-auto" href="#">
+        <a class="btn btn-outline-dark mt-auto" href="/add-to-cart/{{id}}">
             Add to cart
         </a>
       </div>

@@ -1,0 +1,46 @@
+
+
+<div class="col-4 my-2">
+  <div class="card h-100">
+    <!-- Product image-->
+      <img
+        class="card-img-top"
+        src="/images/{{painting.image}}"
+        alt="..."
+      />
+      <!-- Product details-->
+      <div class="card-body p-4">
+        <div class="text-center">
+          <!-- Product name-->
+          <h5 class="fw-bolder">{{painting.title}}</h5>
+
+          <!-- Product price-->
+          $ {{painting.price}}
+        </div>
+      </div>    <!-- Product actions-->
+    <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+      <div class="text-center">
+        <a class="btn btn-outline-dark mt-auto" href="#">
+            Add to cart
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="col-4 my-2">
+    <div class="card h-100">
+        <div class="card-body p-4">
+            <div class="text-center">
+                <h3>
+                    About the artist
+                </h3>
+                <p>
+                    Name: {{painting.artist.name}} <br>
+                    Style: {{painting.artist.art_style}} <br>
+                    Birthplace: {{painting.artist.birthplace}}
+                </p>
+
+            </div>
+        </div>
+    </div>
+</div>

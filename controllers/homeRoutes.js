@@ -10,7 +10,7 @@ router.get('/', async (req, res, next) => {
     try {
 
         console.log("LOGGED IN: "+req.session.loggedIn)
-        
+
         const paintings = await ArtPiece.findAll({
             raw: true,
             nest:true,
@@ -36,7 +36,9 @@ router.get('/', async (req, res, next) => {
 
 router.get('/painting/:id', async (req, res, next) => {
     try {
-        const dbPaintingData = await ArtPiece.findByPk(req.params.id, {
+        const painting = await ArtPiece.findByPk(req.params.id, {
+            raw: true,
+            nest: true,
             include:[{
                 model: Artist,
                 attributes: [
@@ -47,13 +49,14 @@ router.get('/painting/:id', async (req, res, next) => {
             }]
         })
         
-        const painting = dbPaintingData.get({
-            plain: true
+
+        console.log(painting)
+
+        res.render('product-page', {
+            painting,
+            loggedIn: req.session.loggedIn
         })
 
-        res.status(200).json(painting)
-
-        // TODO: render the painting
     } catch (error) {
         console.log(error)
     }
@@ -63,17 +66,18 @@ router.get('/painting/:id', async (req, res, next) => {
 // Add to cart
 
 router.get('/add-to-cart/:id', async (req, res, next) => {
-    const paintingId = req.params.id;
     const cart = new Cart(req.session.cart ? req.session.cart : {})
 
     try {
-        const paintingData = await ArtPiece.findByPk(paintingId);
-        const painting = paintingData.get({plain: true})
-        console.log(painting)
+        const painting = await ArtPiece.findByPk(req.params.id, {
+            raw:true
+        });
 
-        cart.add(painting, paintingId);
+        cart.add(painting, painting.id);
         req.session.cart = cart;
         console.log(req.session.cart)
+        res.redirect('/')
+
     } catch (error) {
         
     }
