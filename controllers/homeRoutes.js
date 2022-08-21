@@ -2,6 +2,7 @@
 const router = require('express').Router()
 const { raw } = require('express');
 const { Artist, ArtPiece, Cart } = require("../models");
+const isAuthenticated = require('../utils/isAuthenticated');
 
 
 // Get all products for the home page
@@ -65,7 +66,7 @@ router.get('/painting/:id', async (req, res, next) => {
 
 // Add to cart
 
-router.get('/add-to-cart/:id', async (req, res, next) => {
+router.get('/add-to-cart/:id', isAuthenticated, async (req, res, next) => {
     const cart = new Cart(req.session.cart ? req.session.cart : {})
 
     try {
@@ -76,25 +77,30 @@ router.get('/add-to-cart/:id', async (req, res, next) => {
         cart.add(painting, painting.id);
         req.session.cart = cart;
         console.log(req.session.cart)
+
         res.redirect('/')
 
     } catch (error) {
         
     }
+})
 
-    // ArtPiece.findByPk(paintingId, function (err, painting) {
-    //     console.log('hey')
-    //     if (err) {
-    //         console.log('hey there was an error');
-    //         // TODO: add some error messaging
-    //     }
-    //     console.log('hello')
-    //     cart.add(painting, painting.id);
-    //     req.session.cart = cart;
-    //     console.log(req.session.cart)
-    //     res.redirect('/')
-    // })
-    // console.log(req.session.cart)
+// Cart Page Route
+
+router.get('/cart', (req, res, next) => {
+
+    if(!req.session.cart) {
+        return res.render('cart')
+    }
+    const cart = new Cart(req.session.cart);
+
+
+    res.render('cart', {
+        items: cart.toArray(),
+        totalQuantity: cart.totalQuantity,
+        totalPrice: cart.totalPrice
+    })
+    
 })
 
 // Register page route
