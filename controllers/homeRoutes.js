@@ -8,10 +8,8 @@ const isAuthenticated = require('../utils/isAuthenticated');
 // Get all products for the home page
 // TODO: Get all paintings where sold: false
 router.get('/', async (req, res, next) => {
+    
     try {
-
-        console.log("LOGGED IN: "+req.session.loggedIn)
-
         const paintings = await ArtPiece.findAll({
             raw: true,
             nest:true,
@@ -24,7 +22,6 @@ router.get('/', async (req, res, next) => {
             paintings,
             loggedIn: req.session.loggedIn
         })
-        //TODO: res.render('homepage') etc. etc.
     } catch (err) {
         console.log(err)
     }
