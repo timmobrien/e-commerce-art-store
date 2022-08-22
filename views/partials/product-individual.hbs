@@ -3,12 +3,14 @@
 <div class="col-4 my-2">
   <div class="card h-100">
     <!-- Product image-->
-      <img
+    <a data-fancybox="responsive" data-src="/images/{{painting.image}}" data-caption="{{painting.title}}">
+        <img
         class="card-img-top"
         src="/images/{{painting.image}}"
         alt="..."
       />
-      <!-- Product details-->
+    </a>
+       <!-- Product details-->
       <div class="card-body p-4">
         <div class="text-center">
           <!-- Product name-->
