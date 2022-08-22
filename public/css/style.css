@@ -3,3 +3,7 @@
     height: 20vw;
     object-fit: cover;
 }
+
+.validator:has(:invalid) {
+    color: red;
+}

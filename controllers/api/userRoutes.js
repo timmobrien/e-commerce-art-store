@@ -61,7 +61,7 @@ router.post('/user/login', async (req, res, next) => {
         }
         
         // If they are, check their password with the checkPassword()
-        const validPassword = await dbUserData.checkPassword(req.body.password)
+        const validPassword = dbUserData.checkPassword(req.body.password)
 
         // If password is incorrect, tell them
         if(!validPassword) {

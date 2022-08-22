@@ -8,9 +8,9 @@
     <div class="row d-flex justify-content-center align-items-center">
       <div class="col-md-9 col-lg-6 col-xl-5">
         <img
-          src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-login-form/draw2.webp"
+          src="/images/gallery2.png"
           class="img-fluid"
-          alt="Sample image"
+          alt="Black and white art gallery"
         />
       </div>
       <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
@@ -47,10 +47,11 @@
             />
           </div>
 
-          <div class="form-outline mb-2">
+          <div class="form-outline validator mb-2">
             <label class="form-label" for="email-input">Email address</label>
             <input
               type="email"
+              pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"
               id="email-input"
               class="form-control form-control-lg"
               placeholder="Enter a valid email address"

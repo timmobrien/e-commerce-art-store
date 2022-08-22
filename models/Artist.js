@@ -19,10 +19,6 @@ Artist.init(
             isAlpha: true,
         }
     },
-    // age: {
-    //     type: DataTypes.INTEGER,
-    //     allowNull: false,
-    // },
     birthplace: {
         type: DataTypes.STRING,
         allowNull: false,

@@ -87,7 +87,7 @@ router.get('/add-to-cart/:id', isAuthenticated, async (req, res, next) => {
 
 // Cart Page Route
 
-router.get('/cart', (req, res, next) => {
+router.get('/cart', isAuthenticated, (req, res, next) => {
 
     if(!req.session.cart) {
         return res.render('cart')
@@ -117,8 +117,12 @@ router.get('/login', (req, res, next) => {
     res.render('login')
 })
 
-router.get('/checkout', (req, res, next) => {
+router.get('/checkout', isAuthenticated, (req, res, next) => {
     res.render('checkout-page')
+})
+
+router.get('/about', (req, res, next) => {
+    res.render('about')
 })
 
 module.exports = router
