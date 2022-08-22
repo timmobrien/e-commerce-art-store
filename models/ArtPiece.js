@@ -24,13 +24,6 @@ ArtPiece.init(
                 model: Artist,
                 key: 'id'
             },
-        // },
-        // // date_created: {
-        // //     type: DataTypes.DATE,
-        // //     allowNull: false,
-        // //     validate: {
-        // //         isDate: true
-        // //     }, 
         },
         art_style: {
             type: DataTypes.STRING,

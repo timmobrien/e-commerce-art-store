@@ -5,12 +5,14 @@ const { Cart } = require('./Cart');
 
 
 
-Artist.hasMany(ArtPiece, {
-    foreignKey: 'artist',
-  });
+ArtPiece.belongsTo(Artist, {
+    foreignKey: 'artist_id',
+});
+
+
 
 User.hasMany(ArtPiece, {
     foreignKey: 'gallery_id',
-  });
+});
 
-  module.exports = {User, Artist, ArtPiece, Cart};
+module.exports = {User, Artist, ArtPiece, Cart};

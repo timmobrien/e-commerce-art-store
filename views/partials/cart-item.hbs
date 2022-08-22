@@ -1,0 +1,42 @@
+<div class="row mb-2">
+  <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
+    <!-- Image -->
+    <div
+      class="bg-image hover-overlay hover-zoom ripple rounded"
+      data-mdb-ripple-color="light"
+    >
+      <img
+        src="/images/{{item.image}}"
+        class="w-100"
+        alt="..."
+      />
+      <a href="#!">
+        <div
+          class="mask"
+          style="background-color: rgba(251, 251, 251, 0.2)"
+        ></div>
+      </a>
+    </div>
+  </div>
+
+  <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
+    <!-- Data -->
+    <p><strong>{{item.title}}</strong></p>
+    
+    <!-- Data -->
+  </div>
+
+  <div class="col-lg-4 col-md-6 mb-4 mb-lg-0">
+    <!-- Quantity -->
+    <div class="d-flex mb-4" style="max-width: 300px">
+
+      <div class="form-outline">
+        <label class="form-label" for="form1">Quantity: {{qty}}</label>
+        <br />
+        <label class="form-label" for="form1">Price:$ {{price}}</label>
+      </div>
+    </div>
+  </div>
+
+</div>
+<hr>
