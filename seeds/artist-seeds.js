@@ -31,6 +31,57 @@ const artistData = [
     birthplace: 'Belgium',
     art_style: 'Oil on canvas',
   },
+  {
+    name: 'Vittorio Natoli',
+    birthplace: 'BLANK',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Ansel Adams',
+    birthplace: 'America',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Dorothea Lange',
+    birthplace: 'America',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Robert Capa',
+    birthplace: 'Hungary',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Robert Frank',
+    birthplace: 'Switzerland',
+    art_style: 'Photography',
+  },
+  {
+    name: 'David Bailey',
+    birthplace: 'United Kingdom',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Andreas Gursky',
+    birthplace: 'Garmany',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Hiroshi Sugimoto',
+    birthplace: 'Japan',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Kiki Smith',
+    birthplace: 'Germany',
+    art_style: 'Photography',
+  },
+  {
+    name: 'Massimo Vitali',
+    birthplace: 'Italy',
+    art_style: 'Photography',
+  },
+
 ];
 
 const seedArtists = () => Artist.bulkCreate(artistData);
