@@ -33,7 +33,7 @@ const artistData = [
   },
   {
     name: 'Vittorio Natoli',
-    birthplace: 'BLANK',
+    birthplace: 'Australia',
     art_style: 'Photography',
   },
   {

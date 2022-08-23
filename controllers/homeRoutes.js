@@ -1,6 +1,5 @@
 // PLAN
 const router = require('express').Router()
-const { raw } = require('express');
 const { Artist, ArtPiece, Cart } = require("../models");
 const isAuthenticated = require('../utils/isAuthenticated');
 
@@ -8,7 +7,7 @@ const isAuthenticated = require('../utils/isAuthenticated');
 // Get all products for the home page
 // TODO: Get all paintings where sold: false
 router.get('/', async (req, res, next) => {
-    
+
     try {
         const paintings = await ArtPiece.findAll({
             raw: true,
@@ -110,6 +109,8 @@ router.get('/register', (req, res, next) => {
     res.render('register');
 });
 
+
+
 router.get('/login', (req, res, next) => {
     res.render('login')
 })
@@ -122,6 +123,9 @@ router.get('/about', (req, res, next) => {
     res.render('about')
 })
 
+router.get('/confirmed', (req, res, next) => {
+    res.render('thank-you')
+})
+
 module.exports = router
 
-// TODO: Route to view cart

@@ -1,7 +1,7 @@
 {{> nav-bar}}
 
-
-{{#if session.cart}}
+{{log session}}
+{{#if session.cart.totalQuantity includeZero=false}}
 <section class="h-100 gradient-custom">
         <div class="container">
             <div class="row d-flex justify-content-center my-4">
