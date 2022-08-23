@@ -6,23 +6,23 @@ const { User } = require('../../models/')
 // Post request for new user
 router.post('/user/', async (req, res, next) => {
     try {
-
-        
+ 
         // Create the user in the db
         const dbUserData = await User.create({
             first_name: req.body.first_name,
             last_name: req.body.last_name,
             password: req.body.password,
             email: req.body.email,
-            address: req.body.address
+            address: req.body.address,
+            
         })
 
-        
-        
+        const user = dbUserData.get({plain: true})
+
         // In session storage, log them in
         req.session.save(() => {
             req.session.loggedIn = true,
-    
+            req.session.userId = user.id
             res.status(200).json(dbUserData)
         })
         
@@ -49,7 +49,7 @@ router.post('/user/login', async (req, res, next) => {
             }
         })
 
-        console.log('DBUSERDATA'+dbUserData)
+        const user = dbUserData.get({plain: true})
         
         if(!dbUserData) {
             res
@@ -75,7 +75,7 @@ router.post('/user/login', async (req, res, next) => {
 
         req.session.save(() => {
             req.session.loggedIn = true
-
+            req.session.userId = user.id
             res
               .status(200)
               .json({user: dbUserData, message: "Log in successful"})

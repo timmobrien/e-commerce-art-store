@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const User = require('./User');
 const Artist = require('./Artist');
 
-class ArtPiece extends Model {}
+class ArtPiece extends Model {};
 
 ArtPiece.init(
     {

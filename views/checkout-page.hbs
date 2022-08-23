@@ -4,7 +4,7 @@
         
         <div class="col-md-4 col-lg-3 col-xl-2 border mt-2 ">
             <h4 class="text-center mt-5">Total cost:  </h4>
-            <p class="text-center">$ {{session.cart.totalPrice}}</p>
+            <p class="text-center order-price">$ {{session.cart.totalPrice}}</p>
 
         </div>
 
@@ -41,10 +41,13 @@
                 </div>
 
                 <div class="text-center text-lg-start mt-2 pt-2">
-                    <button type="button" class="btn btn-primary btn-lg"
-                        style="padding-left: 2.5rem; padding-right: 2.5rem;">Confirm</button>
+                        <button type="submit" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">Confirm</button>
+                
                 </div>
 
             </form>
         </div>
     </div>
+
+<script src="/js/checkout.js"></script>
