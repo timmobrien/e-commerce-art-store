@@ -45,10 +45,13 @@
 
 * Registration Page
 <img src="https://user-images.githubusercontent.com/103645633/186163247-8514d227-52c8-4c5b-8881-8f45174a476a.jpg" width="480">
+
 * Home Page
 <img src="https://user-images.githubusercontent.com/103645633/186163259-6449cfc9-b115-43dc-8185-0f049a2dfd99.jpg" width="480">
+
 * Login Page
 <img src="https://user-images.githubusercontent.com/103645633/186163263-1b54450d-4d3b-4765-8428-5012a35ee1fd.jpg" width="480">
+
 * Product Page
 <img src="https://user-images.githubusercontent.com/103645633/186163266-6afa3f31-b0e7-4e56-aa3f-5c9643c85a32.jpg" width="480">
 
