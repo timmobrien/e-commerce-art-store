@@ -18,6 +18,10 @@ Order.init(
         allowNull: false,
 
     },
+    shipping_address: {
+        type: DataTypes.STRING,
+        allowNull: false,
+    },
     user_id: {
         type: DataTypes.INTEGER,
         references: {
