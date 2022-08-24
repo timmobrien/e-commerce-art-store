@@ -4,6 +4,7 @@ const loginHandler = async function(event) {
     const passwordEl = document.querySelector("#login-password").value.trim();
     const emailEl = document.querySelector('#login-email').value.trim()
 
+    const errorEl = document.getElementById('error-message')
 
     const response = await fetch("/user/login", {
       method: "POST",
@@ -18,7 +19,7 @@ const loginHandler = async function(event) {
     if(response.ok) {
       document.location.replace('/')
     } else {
-      alert('Incorrect username or password')
+      errorEl.classList.remove('visually-hidden')
     }
   };
   
