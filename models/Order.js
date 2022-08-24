@@ -18,6 +18,10 @@ Order.init(
         allowNull: false,
 
     },
+    order_items: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     shipping_address: {
         type: DataTypes.STRING,
         allowNull: false,

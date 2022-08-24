@@ -26,6 +26,21 @@ class Cart {
             this.totalPrice += storedItem.item.price;
         };
 
+        this.removeOne = function (id) {
+            // Reduces the qty of the item by 1
+            this.items[id].qty--;
+            // Reduce the price of the cart entry by the item's price
+            this.items[id].price -= this.items[id].item.price;
+            // Reduce total qty by 1
+            this.totalQuantity--;
+            // Reduce total price by item price
+            this.totalPrice -= this.items[id].item.price;
+
+            if(this.items[id].qty <= 0) {
+                delete this.items[id];
+            }
+        }
+
         this.toArray = function () {
             return Object.values(this.items);
         };
