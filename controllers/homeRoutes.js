@@ -72,13 +72,23 @@ router.get('/add-to-cart/:id', isAuthenticated, async (req, res, next) => {
 
         cart.add(painting, painting.id);
         req.session.cart = cart;
-        console.log(req.session.cart)
 
         res.redirect('/')
 
     } catch (error) {
         
     }
+})
+
+router.get('/remove-item/:id', (req, res, next) => {
+
+    const cart = new Cart(req.session.cart)
+
+    cart.removeOne(req.params.id)
+    req.session.cart = cart;
+
+    res.redirect('/cart')
+
 })
 
 // Cart Page Route

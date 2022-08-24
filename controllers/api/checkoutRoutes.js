@@ -12,28 +12,37 @@ router.post('/checkout/confirm-order', isAuthenticated , async (req, res, next) 
             raw: true,
             plain:true
         })
-        console.log(orderUser)
 
 
 
-        const cartItems = req.session.cart.items
+        const cartItems = new Cart(req.session.cart)
+
+        const cartArr = cartItems.toArray()
+
+        const orderItems = cartArr.map(cartItem => {
+            return {
+               itemName: cartItem.item.title,
+               itemQty: cartItem.qty
+            }
+        })
+        
+
+        
         //TODO: Map through cart array and get each item, put it into an array and then store it in DB
     
 
 
         const orderData = await Order.create({
             total_price: req.session.cart.totalPrice,
+            order_items: JSON.stringify(orderItems),
+            shipping_address: orderUser.address,
             user_id: req.session.userId,
-            shipping_address: orderUser.address
         })
 
         const emptyCart = new Cart({})
 
         req.session.cart = emptyCart
-        // req.session.cart = await new Cart({})    // Doesn't work
-        // req.session.destroy(() => {    // doesn't work
-        //     res.status(204).end();
-        // });
+
         res.status(200).end()
 
     } catch (err) {

@@ -49,17 +49,17 @@ router.post('/user/login', async (req, res, next) => {
             }
         })
 
-        const user = dbUserData.get({plain: true})
         
         if(!dbUserData) {
             res
-              .status(400)
-              .json({
+            .status(400)
+            .json({
                 message: "Incorrect email or password, please try again"
-              })
+            })
             return;
         }
         
+        const user = dbUserData.get({plain: true})
         // If they are, check their password with the checkPassword()
         const validPassword = dbUserData.checkPassword(req.body.password)
 
