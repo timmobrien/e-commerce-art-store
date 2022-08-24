@@ -7,6 +7,12 @@ const signupHandler = async function(event) {
     const email= document.querySelector("#email-input").value.trim();
     const password = document.querySelector("#password-input").value.trim();
 
+    const errorEl = document.getElementById('error-message')
+    if(password.length < 8) {
+      errorEl.classList.remove('visually-hidden');
+      return;
+    }
+
     const response = await fetch("/user/", {
       method: "POST",
       body: JSON.stringify({
