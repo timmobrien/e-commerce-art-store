@@ -6,6 +6,8 @@ class Cart {
         this.totalQuantity = oldCart.totalQuantity || 0;
         this.totalPrice = oldCart.totalPrice || 0;
 
+        console.log("Total price when initialising cart: " + this.totalPrice)
+
         // Add a new item to the cart
         this.add = function (item, id) {
             // The key of each item is their ID
@@ -24,6 +26,8 @@ class Cart {
             this.totalQuantity++;
             // Add the price of the item added to the total price
             this.totalPrice += storedItem.item.price;
+
+            console.log("total price after adding item: "+this.totalPrice)
         };
 
         this.removeOne = function (id) {
@@ -35,12 +39,13 @@ class Cart {
             this.totalQuantity--;
             // Reduce total price by item price
             this.totalPrice -= this.items[id].item.price;
-
+            // If the quantity of the item is 0 or less, delete it from the cart completely
             if(this.items[id].qty <= 0) {
                 delete this.items[id];
             }
         }
 
+        // Creates the cart object as an array
         this.toArray = function () {
             return Object.values(this.items);
         };

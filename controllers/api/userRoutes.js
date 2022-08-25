@@ -17,9 +17,10 @@ router.post('/user/', async (req, res, next) => {
             
         })
 
+        // Get the user data in plain format
         const user = dbUserData.get({plain: true})
 
-        // In session storage, log them in
+        // In session storage, save their login status and the user ID
         req.session.save(() => {
             req.session.loggedIn = true,
             req.session.userId = user.id
@@ -29,7 +30,6 @@ router.post('/user/', async (req, res, next) => {
     } catch (err) {
         // set up error handling later
         console.log(err)
-        console.log('REQUEST: ' + req)
         res.status(500).json(err)
     }
 })
@@ -39,17 +39,15 @@ router.post('/user/', async (req, res, next) => {
 
 router.post('/user/login', async (req, res, next) => {
     try {
-        // See if the user in the db
-        console.log(req.body)
 
-
+        // See if user is in the DB by their email
         const dbUserData = await User.findOne({
             where: {
                 email: req.body.email
             }
         })
 
-        
+        // If they're not in the DB, send a bad response
         if(!dbUserData) {
             res
             .status(400)
@@ -59,8 +57,9 @@ router.post('/user/login', async (req, res, next) => {
             return;
         }
         
+        // Once we've confirmed they're in the DB, get their data in plain form
         const user = dbUserData.get({plain: true})
-        // If they are, check their password with the checkPassword()
+        // Check their password with the checkPassword() function from the model
         const validPassword = dbUserData.checkPassword(req.body.password)
 
         // If password is incorrect, tell them
@@ -73,6 +72,7 @@ router.post('/user/login', async (req, res, next) => {
             return;
         }
 
+        // If password is correct, set their login status and save the userID to the session
         req.session.save(() => {
             req.session.loggedIn = true
             req.session.userId = user.id
@@ -90,6 +90,7 @@ router.post('/user/login', async (req, res, next) => {
 
 // To logout
 router.post('/user/logout', (req, res, next) => {
+    // Destroy the session storage
     if (req.session.loggedIn) {
         req.session.destroy(() => {
           res.status(204).end();
@@ -98,7 +99,5 @@ router.post('/user/logout', (req, res, next) => {
         res.status(404).end();
       }
 });
-    // Destroy the session
-    // Decide if i want to destroy the cart too (probably since we arent saving carts in db)
 
 module.exports = router
