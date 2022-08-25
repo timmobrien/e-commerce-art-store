@@ -73,11 +73,13 @@ router.get('/add-to-cart/:id', isAuthenticated, async (req, res, next) => {
         cart.add(painting, painting.id);
         // Adds the updated cart to session
         req.session.cart = cart;
+
+        console.log("Cart object when adding item to cart: "+JSON.stringify(cart))
         // Go back home
         res.redirect('/')
 
     } catch (error) {
-        
+        console.log(err)
     }
 })
 
@@ -114,6 +116,8 @@ router.get('/cart', isAuthenticated, (req, res, next) => {
         totalQuantity: cart.totalQuantity,
         totalPrice: cart.totalPrice
     })
+
+    console.log('Cart total price when rendering cart: ' + cart.totalPrice)
     
 })
 
