@@ -35,12 +35,13 @@ class Cart {
             this.totalQuantity--;
             // Reduce total price by item price
             this.totalPrice -= this.items[id].item.price;
-
+            // If the quantity of the item is 0 or less, delete it from the cart completely
             if(this.items[id].qty <= 0) {
                 delete this.items[id];
             }
         }
 
+        // Creates the cart object as an array
         this.toArray = function () {
             return Object.values(this.items);
         };
