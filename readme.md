@@ -8,7 +8,7 @@
     <a href="https://github.com/timmobrien/e-commerce-art-store"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="">View Demo</a>
+    <a href="https://e-commerce-art-application.herokuapp.com/">View Demo</a>
     ·
     </p>
 </div>
