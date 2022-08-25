@@ -1,3 +1,4 @@
+
 <div class="row mb-2">
   <div class="col-lg-3 col-md-12 mb-4 mb-lg-0">
     <!-- Image -->
@@ -22,6 +23,9 @@
   <div class="col-lg-5 col-md-6 mb-4 mb-lg-0">
     <!-- Data -->
     <p><strong>{{item.title}}</strong></p>
+    <a href="/remove-item/{{item.id}}">
+      <button class="btn btn-secondary btn-sm">Reduce by one</button>
+    </a>
     
     <!-- Data -->
   </div>
@@ -31,12 +35,14 @@
     <div class="d-flex mb-4" style="max-width: 300px">
 
       <div class="form-outline">
-        <label class="form-label" for="form1">Quantity: {{qty}}</label>
+        <label class="form-label" for="form1">Quantity: {{qty}} </label>
         <br />
-        <label class="form-label" for="form1">Price:$ {{price}}</label>
+        <label class="form-label" for="form1">Price: $ {{price}}</label>
       </div>
     </div>
   </div>
 
 </div>
 <hr>
+
+

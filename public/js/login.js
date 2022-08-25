@@ -1,10 +1,14 @@
 const loginHandler = async function(event) {
     event.preventDefault();
   
+    // Variables for form inputs
     const passwordEl = document.querySelector("#login-password").value.trim();
     const emailEl = document.querySelector('#login-email').value.trim()
 
+    // Variable for hidden error div
+    const errorEl = document.getElementById('error-message')
 
+    // Send post request with user inputs
     const response = await fetch("/user/login", {
       method: "POST",
       body: JSON.stringify({
@@ -14,11 +18,12 @@ const loginHandler = async function(event) {
       headers: { "Content-Type": "application/json" }
     })
 
-    console.log(response)
     if(response.ok) {
+      // Send them home
       document.location.replace('/')
     } else {
-      alert('Incorrect username or password')
+      // Display the error message
+      errorEl.classList.remove('visually-hidden')
     }
   };
   
