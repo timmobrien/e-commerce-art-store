@@ -79,7 +79,7 @@ router.get('/add-to-cart/:id', isAuthenticated, async (req, res, next) => {
         res.redirect('/')
 
     } catch (error) {
-        console.log(err)
+        console.log(error)
     }
 })
 
