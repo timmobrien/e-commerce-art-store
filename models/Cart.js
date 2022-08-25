@@ -22,6 +22,13 @@ class Cart {
             storedItem.qty++;
             // Set the price to qty * price
             storedItem.price = storedItem.item.price * storedItem.qty;
+            console.log("stored Item price: " , storedItem.item.price)
+            console.log("stored Item qty: " , storedItem.item.qty)
+            console.log("multiplication function but console logged " , storedItem.item.price*storedItem.qty)
+            console.log("adding total price but in console log " , totalPrice += storedItem.item.price)
+
+
+
             // Increase the total qty of cart contents
             this.totalQuantity++;
             // Add the price of the item added to the total price
