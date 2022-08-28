@@ -15,13 +15,16 @@
                 <li class="navbar-nav me-auto mb-2 mb-lg-0">
                     {{#if session.loggedIn}}
                     <li class="nav-item">
-                        <a href="/cart" class="nav-link active">Cart 
+                        <a href="/cart" class="nav-link active">Cart
                         {{#if session.cart.totalQuantity}}
                             <span class="badge bg-dark"> {{session.cart.totalQuantity}}</span>
                         {{/if}}
                         </a>
                     </li>
-                        <button type="button" id="logout-btn" class="btn btn-small btn-outline-danger mx-2">Log out</button>                    
+                    <li class="nav-item">
+                        <a href="/orders" class="nav-link active">Past Orders</a>                        
+                    </li>
+                        <button type="button" id="logout-btn" class="btn btn-small btn-outline-danger mx-2">Log out</button>                   
                     {{else}}
                     <li class="nav-item">
                         <a href="/login" class="nav-link active">Login</a>

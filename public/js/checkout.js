@@ -20,3 +20,4 @@ const checkoutHandler = async function (event) {
 
 document
     .addEventListener("submit", checkoutHandler)
+
