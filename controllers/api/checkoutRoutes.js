@@ -22,7 +22,8 @@ router.post('/checkout/confirm-order', isAuthenticated , async (req, res, next) 
         const orderItems = cartArr.map(cartItem => {
             return {
                itemName: cartItem.item.title,
-               itemQty: cartItem.qty
+               itemQty: cartItem.qty,
+               itemPrice: cartItem.price // check this works
             }
         })    
 

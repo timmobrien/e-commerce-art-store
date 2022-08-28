@@ -1,0 +1,27 @@
+{{> nav-bar}}
+{{> home-header}}
+
+{{#if orders}}
+<section class="h-100 gradient-custom mb-5">
+    <div class="container">
+        <div class="row d-flex justify-content-center my-4">
+            <div class="col-md-8">
+                {{!-- for each order --}}
+                {{#each orders as |order|}}
+                {{> order-details}}
+                {{/each}}
+        </div>
+    </div>
+</section>
+{{else}}
+<div class="text-center">
+
+    <h1 class="text-center m-3"> You have not ordered anything yet. </h1>
+    <a href="/">
+    <button class="btn btn-primary">Return to home</button>
+    </a>
+
+</div>
+{{/if}}
+
+{{> footer}}

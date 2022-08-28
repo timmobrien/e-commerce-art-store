@@ -19,9 +19,9 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="billing-address">Billing Address</label>
-                    <input type="text" id="billing-address" class="form-control form-control-lg"
-                        placeholder="Enter your billing-address" />
+                    <label class="form-label" for="billing-zip">Billing ZIP Code</label>
+                    <input type="text" id="billing-zip" class="form-control form-control-lg"
+                        placeholder="6000" />
                 </div>
 
                 <div class="form-outline mb-2">
@@ -31,8 +31,13 @@
                 </div>
 
                 <div class="form-outline mb-2">
-                    <label class="form-label" for="card-expiration">Expiration</label>
-                    <input type="text" id="card-expiration" class="form-control form-control-lg" placeholder="01/25" />
+                    <label class="form-label" for="card-expiration-month">Expiration month</label>
+                    <input type="text" id="card-expiration-month" class="form-control form-control-lg" placeholder="01" />
+                </div>
+
+                <div class="form-outline mb-2">
+                    <label class="form-label" for="card-expiration-year">Expiration year</label>
+                    <input type="text" id="card-expiration-year" class="form-control form-control-lg" placeholder="2025" />
                 </div>
 
                 <div class="form-outline mb-2">
@@ -50,5 +55,5 @@
         </div>
     </div>
 {{> footer}}
-
+<script src="https://js.stripe.com/v3/"></script>
 <script src="/js/checkout.js"></script>
